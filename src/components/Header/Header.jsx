@@ -44,7 +44,7 @@ const Header = () => {
       <Container>
         <nav className='flex justify-between items-center'>
         <div className='mr-4'>
-          <Link to="/" className='text-5xl font-bold'><span className='text-red-600'>CU</span> <span className='text-white'>Talks</span></Link>
+          <Link to="/" className='text-5xl font-bold'><span className='text-red-600'>Blog</span> <span className='text-white'>App</span></Link>
         </div>
         <ul className='flex'>
           {
