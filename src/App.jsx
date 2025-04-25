@@ -33,9 +33,6 @@ const App = () => {
       <Header/>
       <main>
       <Outlet/>
-      {/* <Routes>
-          we can also use this just wrap out app with browser router 
-      </Routes> */}
       </main>
       <Footer/>
     </div>

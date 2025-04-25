@@ -10,6 +10,7 @@ export class AuthService{
     // we are not defining above account kyuki hm chahte hai jab object create ho aur constructor call ho then we will define it
 
     constructor(){
+        //when ever an object is created this construcor will be called
         this.client.setEndpoint(config.appwriteUrl)
         .setProject(config.projectId)
 
