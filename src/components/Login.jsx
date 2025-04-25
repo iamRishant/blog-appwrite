@@ -5,12 +5,13 @@ import authService from "../appwrite/auth";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout, login as authLogin } from "../store/authReducer";
+
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
-//   handle submit hai jo ek method leta hai we have to pass our method in handleSubmit react form help us in managing state we dont need to manage state react form khud sara state manage kar lena using register
+  //   handle submit hai jo ek method leta hai we have to pass our method in handleSubmit react form help us in managing state we dont need to manage state react form khud sara state manage kar lena using register
   const [error, setError] = useState("");
 
   const login = async (data) => {
@@ -28,15 +29,16 @@ const Login = () => {
       setError(error);
     }
   };
+  
   return (
-    <div className="flex items-center justify-center w-full my-[10vh]">
+    <div className="flex items-center justify-center w-full px-4 sm:px-6 my-8 sm:my-[10vh]">
       <div
-        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}
+        className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-4 sm:p-6 md:p-10 border border-black/10`}
       >
-        <h2 className="text-center text-2xl font-bold leading-tight">
+        <h2 className="text-center text-xl sm:text-2xl font-bold leading-tight">
           Sign in to your account
         </h2>
-        <p className="mt-2 text-center text-base text-black/60">
+        <p className="mt-2 text-center text-sm sm:text-base text-black/60">
           Don&apos;t have any account?&nbsp;
           <Link
             to="/signup"
@@ -46,10 +48,10 @@ const Login = () => {
           </Link>
         </p>
 
-        {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
+        {error && <p className="text-red-600 mt-4 sm:mt-8 text-center text-sm sm:text-base">{error}</p>}
 
-        <form onSubmit={handleSubmit(login)} className="mt-8">
-          <div className="space-y-5">
+        <form onSubmit={handleSubmit(login)} className="mt-6 sm:mt-8">
+          <div className="space-y-4 sm:space-y-5">
             <Input
               label="Email: "
               placeholder="Enter your email"

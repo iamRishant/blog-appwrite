@@ -1,19 +1,21 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Container } from '../components/Index'
 import PostForm from '../components/post-form/PostForm'
-import { useDispatch, useSelector } from 'react-redux'
-import authService from '../appwrite/auth'
-import { login } from '../store/authReducer'
+import { useSelector } from 'react-redux'
 
 const AddPost = () => {
+  const userData = useSelector((state) => state.auth.userData);
   
-
-  const userData=useSelector((state)=>state.auth.userData);
-  // if(userData===undefined) window.location.reload(false)
   return (
-    <div className='py-8'>
+    <div className='py-4 sm:py-6 md:py-8 px-4 sm:px-0'>
       <Container>
-        {userData ?<PostForm/>:<h1>Loading ....</h1>}
+        {userData ? (
+          <PostForm />
+        ) : (
+          <div className="flex justify-center items-center min-h-[50vh]">
+            <h1 className="text-xl sm:text-2xl font-medium text-gray-700">Loading ...</h1>
+          </div>
+        )}
       </Container>
     </div>
   )

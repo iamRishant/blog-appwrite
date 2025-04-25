@@ -84,7 +84,7 @@ export default function PostForm({ post }) {
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+            <div className="w-full md:w-2/3 px-2 mb-6 md:mb-0">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -102,7 +102,7 @@ export default function PostForm({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-full md:w-1/3 px-2">
                 <Input
                     label="Featured Image :"
                     type="file"
@@ -115,7 +115,7 @@ export default function PostForm({ post }) {
                         <img
                             src={service.getFilePreview(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg w-full h-auto object-cover"
                         />
                     </div>
                 )}
@@ -125,7 +125,11 @@ export default function PostForm({ post }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
+                <Button 
+                    type="submit" 
+                    bgColor={post ? "bg-green-500" : undefined} 
+                    className="w-full mt-4 md:mt-6"
+                >
                     {post ? "Update" : "Submit"}
                 </Button>
             </div>

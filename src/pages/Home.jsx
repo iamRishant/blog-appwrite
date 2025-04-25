@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react'
 import service from '../appwrite/db'
-
 import { Container } from '../components/Index'
 import PostCard from '../components/PostCard'
-import { useDispatch, useSelector } from 'react-redux'
-import authService from '../appwrite/auth'
-import { login } from '../store/authReducer'
-
+import { useSelector } from 'react-redux'
 
 function Home() {
     const [posts, setPosts] = useState([])
-    const userData=useSelector((state)=>state.auth.userData);
-
-    if(userData===undefined) window.location.reload(false)
-
-
+    const userData = useSelector((state) => state.auth.userData);
+    
+    // Better to handle this with a proper redirect in a useEffect instead of directly in render
+    useEffect(() => {
+        if(userData === undefined) {
+            window.location.reload(false);
+        }
+    }, [userData]);
 
     useEffect(() => {
         service.getPosts().then((posts) => {
@@ -31,7 +30,7 @@ function Home() {
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                                {userData ? "Add a blog":"Login to see blog"}
+                                {userData ? "Add a blog" : "Login to see blog"}
                             </h1>
                         </div>
                     </div>
@@ -39,12 +38,13 @@ function Home() {
             </div>
         )
     }
+    
     return (
         <div className='w-full py-8'>
             <Container>
                 <div className='flex flex-wrap'>
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/4'>
+                        <div key={post.$id} className='p-2 w-full sm:w-1/2 md:w-1/3 lg:w-1/4'>
                             <PostCard {...post} />
                         </div>
                     ))}
